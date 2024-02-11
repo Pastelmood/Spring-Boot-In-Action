@@ -13,8 +13,8 @@ public class WalletController {
     List<Wallet> walletList = new ArrayList<>();
 
     public WalletController() {
-        Wallet tempWallet1 = new Wallet("Shinonome", 5000);
-        Wallet tempWallet2 = new Wallet("Ayaka", 10000);
+        Wallet tempWallet1 = new Wallet(1,"Shinonome", 5000);
+        Wallet tempWallet2 = new Wallet(2,"Ayaka", 10000);
         walletList.add(tempWallet1);
         walletList.add(tempWallet2);
     }
@@ -29,4 +29,8 @@ public class WalletController {
         return newWallet;
     }
 
+    @PutMapping("/{id}")
+    public Wallet updateWallet(@PathVariable int id, @RequestBody Wallet wallet) {
+        return wallet;
+    }
 }

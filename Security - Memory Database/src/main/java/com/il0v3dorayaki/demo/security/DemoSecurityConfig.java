@@ -23,7 +23,7 @@ public class DemoSecurityConfig {
                 .builder()
                 .username("shinonome")
                 .password("{noop}test123")
-                .roles("USER","ADMIN")
+                .roles("USER","ADMIN", "MANAGER")
                 .build();
 
         // account 2
@@ -47,6 +47,7 @@ public class DemoSecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/wallets").hasRole("USER")
                 .requestMatchers(HttpMethod.GET, "/api/wallets/**").hasRole("USER")
                 .requestMatchers(HttpMethod.POST, "/api/wallets").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/wallets/**").hasRole("MANAGER")
         );
 
         // use http basic authentication
